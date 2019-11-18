@@ -1,7 +1,19 @@
-import React from 'react';
-import Nav from './Nav';
+import React from "react";
+import Nav from "./Nav";
+import Axios from "axios";
 
 const App = () => {
+  let users = [];
+
+  Axios.get("https://jsonplaceholder.typicode.com/users")
+    .then(res => {
+      console.log("Première promesse avant affectation users", users);
+      users = res.data;
+    })
+    .then(() => {
+      console.log("Deuxième promesse", users);
+    });
+
   return (
     <>
       <Nav />
@@ -10,6 +22,6 @@ const App = () => {
       </div>
     </>
   );
-}
+};
 
 export default App;
