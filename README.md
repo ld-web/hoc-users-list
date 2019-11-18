@@ -16,7 +16,7 @@ Renommez ensuite les fichiers CSS en SCSS, et changez les imports dans `index.js
 
 Import de Bootstrap :
 
-> Fichier : index.scss
+> Fichier : src/index.scss
 
 ```scss
 // '~' désigne le dossier node_modules
@@ -39,7 +39,7 @@ Pour le moment on ne veut qu'un menu simple et non dynamique, avec un élément 
 
 ---
 
-> Fichier : Nav.js
+> Fichier : src/Nav.js
 
 ```javascript
 import React, { Component } from "react";
@@ -53,7 +53,7 @@ class Nav extends Component {
 export default Nav;
 ```
 
-> Fichier : App.js
+> Fichier : src/App.js
 
 ```javascript
 //...
@@ -77,7 +77,7 @@ Notre barre de menu s'affiche, mais en mode responsive, le bouton "burger" ne fo
 
 Nous n'avons pas importé le JS de Bootstrap, seulement le CSS dans notre fichier SASS.
 
-> Fichier : index.js
+> Fichier : src/index.js
 
 ```javascript
 //...
@@ -118,7 +118,7 @@ yarn add axios
 
 Puis nous allons l'utiliser pour faire notre requête.
 
-> Fichier : App.js
+> Fichier : src/App.js
 
 ```javascript
 //...
@@ -144,7 +144,7 @@ La console devrait afficher la liste reçue.
 
 Nous allons tenter, dans un premier temps, de générer une liste dans notre composant `App`, puis de l'inclure dans notre template.
 
-> Fichier : App.js
+> Fichier : src/App.js
 
 ```javascript
 //...
@@ -190,7 +190,7 @@ Nous allons donc :
 
 Pour le moment, n'utilisons pas les composants fonctionnels. Nous verrons plus tard comment gérer un état dans un composant fonctionnel.
 
-> Fichier : App.js
+> Fichier : src/App.js
 
 ```javascript
 import React, { Component } from "react";
@@ -228,7 +228,7 @@ Notre liste est à présent initialisée dans le constructeur du composant.
 
 Pour l'affecter, nous allons utiliser une méthode du [cycle de vie](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) du composant.
 
-> Fichier : App.js
+> Fichier : src/App.js
 
 ```javascript
 //...
@@ -262,7 +262,7 @@ Pour générer une liste, nous pouvons faire appel à la méthode JS `map` sur u
 
 Pour chaque élément de notre tableau, nous allons générer une balise HTML contenant l'affichage d'un utilisateur
 
-> Fichier : App.js
+> Fichier : src/App.js
 
 ```javascript
 //...
@@ -306,7 +306,7 @@ Il effectue l'appel à l'API, affiche la liste d'utilisateurs, et génère le te
 
 Nous allons séparer notre architecture en plusieurs composants, que nous pourrons ensuite appeler dans `App`. Au besoin, nous pourrons aussi les réutiliser.
 
-> Fichier : User.js
+> Fichier : src/User.js
 
 ```javascript
 import React, { Component } from "react";
@@ -330,7 +330,7 @@ Cette notion est différente d'un `state`, car il s'agit de données fournies en
 
 ---
 
-> Fichier : UserList.js
+> Fichier : src/UserList.js
 
 ```javascript
 import React, { Component } from "react";
@@ -365,7 +365,7 @@ Le résultat devrait être strictement le même. L'avantage est que nous avons d
 
 > Séparez la logique de récupération des utilisateurs dans un autre fichier, `UserService.js` par exemple, dans lequel vous déporterez l'appel à l'API.
 >
-> Fichier : UserService.js
+> Fichier : src/UserService.js
 
 ```javascript
 import Axios from "axios";
@@ -381,7 +381,7 @@ export const getUsers = () => {
 
 ---
 
-> Fichier : UserList.js
+> Fichier : src/UserList.js
 
 ```javascript
 //...
@@ -415,7 +415,7 @@ Nous voulons à présent installer une zone de texte nous permettant de filtrer 
 
 > Faites un composant pour gérer la recherche
 >
-> Fichier : UserSearch.js
+> Fichier : src/UserSearch.js
 
 ```javascript
 import React, { Component } from "react";
@@ -453,7 +453,7 @@ Par ailleurs, c'est ce composant qui détiendra dans son state :
 - La liste à afficher (filtrée à partir de la liste initiale)
 - Le terme de recherche
 
->Fichier : UserList.js
+>Fichier : src/UserList.js
 
 ```javascript
 import React, { Component } from "react";
@@ -468,7 +468,7 @@ class UserList extends Component {
 export default UserList;
 ```
 
->Fichier : Users.js
+>Fichier : src/Users.js
 
 ```javascript
 import React, { Component } from "react";
@@ -544,7 +544,7 @@ yarn add react-router-dom
 
 Pour afficher un utilisateur, nous allons créer un nouveau composant `UserPage`.
 
-> Fichier : UserPage.js
+> Fichier : src/UserPage.js
 
 ```javascript
 import React, { Component } from 'react';
@@ -588,7 +588,7 @@ On notera également la manière de récupérer le paramètre d'URL `id` :
 const { id } = this.props.match.params;
 ```
 
-> Fichier : UserService.js
+> Fichier : src/UserService.js
 
 ```javascript
 export const getUser = async id => {
@@ -607,7 +607,7 @@ export const getUser = async id => {
 
 Utilisation du package `react-router-dom` :
 
-> Fichier : App.js
+> Fichier : src/App.js
 
 ```javascript
 import React, { Component } from "react";
@@ -642,7 +642,7 @@ export default App;
 
 Enfin, dans notre composant `User`, on va ajouter un lien vers une fiche :
 
-> Fichier : User.js
+> Fichier : src/User.js
 
 ```javascript
 //...
