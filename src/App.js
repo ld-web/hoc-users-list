@@ -1,13 +1,14 @@
 import React from 'react';
-import './App.scss';
+import Nav from './Nav';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <button className="btn btn-success">
-        MON BOUTON
-      </button>
-    </div>
+    <>
+      <Nav />
+      <div className="container-fluid">
+        <h1>Utilisateur</h1>
+      </div>
+    </>
   );
 }
 
