@@ -35,7 +35,7 @@ Pour le moment on ne veut qu'un menu simple et non dynamique, avec un élément 
 >
 > **Note : un composant React ne peut pas retourner plusieurs balises adjacentes. Il doit retourner une seule balise "racine" avec le contenu du composant.**
 >
-> **Note : la balise `class` en HTML devient `className` en JSX, `class` étant un mot réservé en JS**
+> **Note : l'attribut `class` en HTML devient `className` en JSX, `class` étant un mot réservé en JS**
 
 ---
 
