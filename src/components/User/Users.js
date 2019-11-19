@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { getUsers } from "./UserService";
-import Search from "./Search";
+import { getUsers } from "../../services/UserService";
+import Search from "../Utils/Search";
 import UserList from "./UserList";
 
 class Users extends Component {

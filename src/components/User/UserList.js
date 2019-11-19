@@ -5,7 +5,7 @@ class UserList extends Component {
   render = () => {
     const { users } = this.props;
     return users.map(user => (
-      <User name={user.name} email={user.email} key={user.id} />
+      <User id={user.id} name={user.name} email={user.email} key={user.id} />
     ));
   };
 }
