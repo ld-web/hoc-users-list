@@ -415,12 +415,12 @@ Nous voulons à présent installer une zone de texte nous permettant de filtrer 
 
 > Faites un composant pour gérer la recherche
 >
-> Fichier : src/UserSearch.js
+> Fichier : src/Search.js
 
 ```javascript
 import React, { Component } from "react";
 
-class UserSearch extends Component {
+class Search extends Component {
   render = () => {
     const { handleChange, searchTerm } = this.props;
 
@@ -438,12 +438,12 @@ class UserSearch extends Component {
   };
 }
 
-export default UserSearch;
+export default Search;
 ```
 
 Nous parlerons après de la propriété `handleChange`.
 
-Nous ne pouvons pas intégrer `UserSearch` dans `UserList`, nous mélangerions deux fonctionnalités différentes.
+Nous ne pouvons pas intégrer `Search` dans `UserList`, nous mélangerions deux fonctionnalités différentes.
 
 Nous allons donc créer un nouveau composant `Users` qui regroupera la recherche et la liste.
 
@@ -473,7 +473,7 @@ export default UserList;
 ```javascript
 import React, { Component } from "react";
 import { getUsers } from "./UserService";
-import UserSearch from "./UserSearch";
+import Search from "./Search";
 import UserList from "./UserList";
 
 class Users extends Component {
@@ -512,7 +512,7 @@ class Users extends Component {
   render = () => {
     return (
       <>
-        <UserSearch handleChange={this.search} searchTerm={this.state.search} />
+        <Search handleChange={this.search} searchTerm={this.state.search} />
         <div className="row">
           <UserList users={this.state.userSearch} />
         </div>
