@@ -3,8 +3,12 @@
 ## Création de l'application
 
 > Utilisez create-react-app, qui fournit une structure de base, les dépendances à jour et le hot reload déjà configurés
+>
+>*But : savoir initialiser son projet avec le package npm create-react-app, qui nous apporte déjà une structure applicative de base*
 
 ### Pour ajouter Sass à votre projet
+
+>*But : Savoir ajouter le support de Sass dans un projet. Sass est une "surcouche" de CSS permettant de déclarer des variables, des fonctions, des mixins, etc...puis qui compile les fichiers SCSS en fichiers CSS*
 
 `yarn add node-sass`
 
@@ -12,10 +16,16 @@ Renommez ensuite les fichiers CSS en SCSS, et changez les imports dans `index.js
 
 ### Ajout et inclusion de Bootstrap au projet
 
+>*But : savoir intégrer un package dans notre application. Un package intégré à notre application est une dépendance. il faut donc savoir utiliser Yarn (ou npm) en tant que gestionnaire de dépendances pour intégrer un package (on peut aussi l'appeler librairie tierce).*
+>
+>*Le second but est donc de savoir localiser le package en question dans le registre NPM, mais aussi de savoir se documenter concernant l'installation et la configuration de ce package*
+
 `yarn add bootstrap`
 
 Import de Bootstrap :
 
+>*But : Intégrer les fichiers CSS de Bootstrap dans notre application. On s'appuie pour cela de la documentation de Bootstrap*
+>
 > Fichier : src/index.scss
 
 ```scss
@@ -23,9 +33,15 @@ Import de Bootstrap :
 @import "~bootstrap/scss/bootstrap";
 ```
 
+>*But : se documenter concernant Bootstrap afin d'en avoir une utilisation plus fine et plus avancée*
+
 Pour personnaliser les variables de configuration SASS : [Documentation](https://getbootstrap.com/docs/4.3/getting-started/theming/#sass-options).
 
 ### Création d'une barre de menu
+
+>*But : créer un premier composant, sous forme de classe, afin d'afficher du contenu*
+>
+>*But : découvrir JSX*
 
 Créez un composant (sous forme de classe pour le moment) qui sera chargé d'afficher le menu de l'application.
 
@@ -36,6 +52,8 @@ Pour le moment on ne veut qu'un menu simple et non dynamique, avec un élément 
 > **Note : un composant React ne peut pas retourner plusieurs balises adjacentes. Il doit retourner une seule balise "racine" avec le contenu du composant.**
 >
 > **Note : l'attribut `class` en HTML devient `className` en JSX, `class` étant un mot réservé en JS**
+>
+> **Note : un composant classe doit implémenter au minimum la méthode `render`, qui permet d'afficher le composant à l'écran. Si vous réfléchissez à faire un composant qui n'affiche rien, alors ce n'est pas un composant. Il s'agit certainement d'une fonctionnalité qui appartiendrait à la couche de services**
 
 ---
 
@@ -54,6 +72,10 @@ export default Nav;
 ```
 
 > Fichier : src/App.js
+>
+> *But : continuer la découverte de JSX en intégrant un composant dans un autre composant*
+>
+>*But : découvrir la notion de **fragments***
 
 ```javascript
 //...
@@ -72,6 +94,8 @@ const App = () => {
 > **Note : si vous voulez retourner plusieurs balises adjacentes, utilisez les [fragments](https://reactjs.org/docs/fragments.html)**
 
 ### Import de Bootstrap (JS)
+
+>*But : utiliser une librairie tierce dans l'application, en l'important comme un  module*
 
 Notre barre de menu s'affiche, mais en mode responsive, le bouton "burger" ne fonctionne pas.
 
@@ -95,6 +119,8 @@ Une fois les dépendances installées, notre menu devrait fonctionner en respons
 
 ## Affichage d'une liste d'utilisateurs
 
+>*But : savoir appeler une API, puis exploiter la réponse de l'API dans les composants de l'application*
+
 Pour récupérer nos utilisateurs, nous allons faire appel à une API : <https://jsonplaceholder.typicode.com/>.
 
 Un aperçu de la liste d'utilisateurs au format JSON est disponible à cette URL : <https://jsonplaceholder.typicode.com/users>.
@@ -111,6 +137,8 @@ Les deux principales utilisées sont :
 - le package [Axios](https://github.com/axios/axios)
 
 Nous allons utiliser le package Axios.
+
+>*But : utiliser une librairie tierce*
 
 ```bash
 yarn add axios
@@ -176,6 +204,10 @@ La page n'affiche aucune liste.
 
 ### Utilisation du state pour initialiser notre liste puis l'affecter via notre API
 
+>*But : savoir générer une liste à partir d'un tableau, et savoir intégrer l'attribut `key` dans chaque élément de la liste*
+>
+>*But : savoir initialiser et manipuler l'état d'un composant classe*
+
 Pour afficher notre liste, nous allons devoir passer par une variable `state` héritée de la classe `Component` de React.
 
 Le `state` nous permet de contrôler notre liste directement dans notre composant, donc de temporiser son affectation.
@@ -187,6 +219,8 @@ Nous allons donc :
 - L'afficher dans le template
 
 #### Transformation de notre composant en classe
+
+>*But : découvrir les méthodes de gestion du cycle de vie d'un composant classe*
 
 Pour le moment, n'utilisons pas les composants fonctionnels. Nous verrons plus tard comment gérer un état dans un composant fonctionnel.
 
@@ -258,6 +292,10 @@ class App extends Component {
 
 #### Génération de la liste dans le template
 
+>*But : savoir exploiter un tableau pour en générer une liste d'éléments dans l'interface*
+>
+>*But : manipuler la syntaxe Javascript dans la méthode render, donc dans du JSX*
+
 Pour générer une liste, nous pouvons faire appel à la méthode JS `map` sur un tableau JS.
 
 Pour chaque élément de notre tableau, nous allons générer une balise HTML contenant l'affichage d'un utilisateur
@@ -300,6 +338,14 @@ Les noms de nos utilisateurs s'affichent bien à l'écran.
 
 ## Factorisation des composants
 
+>*But : séparer les responsabilités*
+>
+>*But : savoir créer des composants à partir d'un code existant*
+>
+>*But : savoir utiliser les propriétés de composant pour transférer des données d'un parent à un enfant*
+>
+>*But : connaître la différence entre un `state` et des `props`*
+
 Notre composant `App` s'occupe de trop de choses.
 
 Il effectue l'appel à l'API, affiche la liste d'utilisateurs, et génère le template de chaque utilisateur.
@@ -329,7 +375,8 @@ Cette notion est différente d'un `state`, car il s'agit de données fournies en
 > Nous aurions également pu écrire ce composant sous forme d'une fonction javascript pure. Une fonction pure est une fonction qui a un comportement prévisible, qui ne change pas les paramètres passés en entrée (ici nos propriétés), et qui n'a aucun effet de bord (elle ne se charge que de générer un template à partir des propriétés, rien d'autre. Pas d'autre appel à une API, pas de changement dans un autre élément d'interface, etc...).
 
 ---
-
+>*But : Intégrer un composant depuis un autre composant, dans une liste, afin de factoriser l'affichage*
+>
 > Fichier : src/UserList.js
 
 ```javascript
@@ -364,6 +411,8 @@ export default UserList;
 Le résultat devrait être strictement le même. L'avantage est que nous avons découplé les différentes responsabilités d'affichage de notre application. Notre composant `App` fait appel à une `UserList`. Cette `UserList` récupère les utilisateurs et génère un template utilisateur pour chacun, à l'aide du composant `User`.
 
 > Séparez la logique de récupération des utilisateurs dans un autre fichier, `UserService.js` par exemple, dans lequel vous déporterez l'appel à l'API.
+>
+>*But : savoir créer une couche de service sur laquelle un ou plusieurs composants pourront s'appuyer*
 >
 > Fichier : src/UserService.js
 
@@ -408,11 +457,17 @@ class UserList extends Component {
 ### Exercice
 
 > ### Faites évoluer le template `User` pour avoir un résultat plus élaboré à l'écran. Tirez parti du passage de propriétés dans votre composant
+>
+>*But : pratiquer du Sass/CSS pour construire des interfaces jolies*
 
 ### Filtre de recherche
 
 Nous voulons à présent installer une zone de texte nous permettant de filtrer les utilisateurs à l'écran.
 
+>*But : savoir transmettre des fonctions dans les propriétés*
+>
+>*But : organiser son application selon une hiérarchie bien précise : un composant parent détenant le state et déléguant des valeurs de propriétés à ses enfants*
+>
 > Faites un composant pour gérer la recherche
 >
 > Fichier : src/Search.js
@@ -532,6 +587,8 @@ export default Users;
 
 ### Fiche utilisateur et navigation
 
+>*But : savoir simuler une application sur plusieurs pages*
+
 Notre application ne contient qu'un seul point d'entrée : `index.js`.
 
 Pour pouvoir naviguer, nous allons simplement donner l'illusion d'un changement de page en affichant un composant ou un autre en fonction de l'URL.
@@ -607,6 +664,10 @@ export const getUser = async id => {
 
 Utilisation du package `react-router-dom` :
 
+>*But : savoir utiliser le package React Router DOM*
+>
+>*But : savoir prendre en charge des URL avec des paramètres*
+>
 > Fichier : src/App.js
 
 ```javascript
@@ -670,6 +731,8 @@ class User extends Component {
 >On pourrait définir nos routes dans les constantes ! On n'aurait plus qu'à se référer aux constantes pour générer des routes
 
 ### Bonus : un loader le temps de récupérer l'utilisateur
+
+>*But : savoir temporiser son interface pour une meilleure expérience utilisateur*
 
 Dans le composant `UserPage`, introduire une clé `loading` dans le state, valeur d'initialisation à `true`.
 
