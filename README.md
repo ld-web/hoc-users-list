@@ -2,7 +2,7 @@
 
 ## Création de l'application
 
-> Utilisez create-react-app, qui fournit une structure de base, les dépendances à jour et le hot reload déjà configurés
+> Utilisez npx qui exécutera la dernière version de create-react-app, qui fournit une structure de base, les dépendances à jour et le hot reload déjà configurés. Plus d'infos sur la [documentation officielle](https://create-react-app.dev/docs/getting-started/#quick-start).
 >
 >*But : savoir initialiser son projet avec le package npm create-react-app, qui nous apporte déjà une structure applicative de base*
 
